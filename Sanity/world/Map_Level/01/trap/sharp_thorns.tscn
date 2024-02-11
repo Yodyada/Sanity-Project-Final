@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://dikl3pnqcohgj"]
+
+[ext_resource type="Texture2D" uid="uid://d2uclqocqp14d" path="res://world/Map_Level/01/Tiles_rock/tile36.png" id="1_dv26h"]
+
+[node name="sharp thorns" type="Area2D"]
+texture_filter = 1
+position = Vector2(0, -14)
+rotation = -3.14553
+scale = Vector2(0.707555, 1.00061)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(24.8923, -22.7753)
+scale = Vector2(0.189284, 0.189284)
+texture = ExtResource("1_dv26h")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+texture_filter = 1
+position = Vector2(24.8331, -22.6759)
+scale = Vector2(0.193047, 0.193047)
+polygon = PackedVector2Array(17, -27, 15, -21, 11, -8, 7.80417, 0.0217056, 5, -1, 6, 5, 4, 7, 5, 9, 1.87431, 13.8017, 1, 11, -1, 7, -3.9558, 9.64657, -6, 7, -6, 3, -7, -3, -11.6909, -2.79182, -12, -7, -14, -14, -17.4289, -23.5026, -17.3829, -31.7804, 17, -32)

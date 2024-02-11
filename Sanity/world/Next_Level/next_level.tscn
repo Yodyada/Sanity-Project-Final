@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://bpwi64migeens"]
+
+[ext_resource type="Texture2D" path="res://world/next_level/Green Portal Sprite Sheet.png" id="1_5hxa6"]
+[ext_resource type="Script" path="res://world/next_level.gd" id="1_fsdt0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_smaue"]
+radius = 9.0
+height = 46.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewqao"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ukuax"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kushk"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_raau7"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i030k"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf6h7"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4g82c"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01m0w"]
+atlas = ExtResource("1_5hxa6")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_leku1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewqao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ukuax")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kushk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_raau7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i030k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf6h7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4g82c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_01m0w")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 6.5
+}]
+
+[node name="next_level" type="Area2D"]
+script = ExtResource("1_fsdt0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(137, 111)
+shape = SubResource("CapsuleShape2D_smaue")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(137, 106)
+sprite_frames = SubResource("SpriteFrames_leku1")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.999606
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

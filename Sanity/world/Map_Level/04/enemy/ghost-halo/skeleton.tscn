@@ -1,0 +1,110 @@
+[gd_scene load_steps=21 format=3 uid="uid://cv1fi7q0h0vse"]
+
+[ext_resource type="Texture2D" uid="uid://mi7tbf0u573v" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-1.png" id="1_tqmpl"]
+[ext_resource type="Script" path="res://world/Map_Level/04/enemy/ghost-halo/skeleton.gd" id="1_vbbfa"]
+[ext_resource type="Texture2D" uid="uid://bsmnngdmp5jma" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-2.png" id="2_hh6ao"]
+[ext_resource type="Texture2D" uid="uid://bloqih7twi17c" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-3.png" id="3_1npfu"]
+[ext_resource type="Texture2D" uid="uid://b4jrp7ycmk0ur" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-4.png" id="4_jvsh7"]
+[ext_resource type="Texture2D" uid="uid://dclk43uim4t8c" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-5.png" id="5_w3hrl"]
+[ext_resource type="Texture2D" uid="uid://v8j71kcnkjxr" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-6.png" id="6_wycxs"]
+[ext_resource type="Texture2D" uid="uid://o7ag7keq53sx" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-7.png" id="7_bo4iw"]
+[ext_resource type="Texture2D" uid="uid://b6stm1nybbbsf" path="res://world/Map_Level/04/enemy/skeleton-clothed/skeleton-clothed-8.png" id="8_kl2xu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4cda"]
+atlas = ExtResource("1_tqmpl")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ipju"]
+atlas = ExtResource("2_hh6ao")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l7dkp"]
+atlas = ExtResource("3_1npfu")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hyciy"]
+atlas = ExtResource("4_jvsh7")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ophit"]
+atlas = ExtResource("5_w3hrl")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnetf"]
+atlas = ExtResource("6_wycxs")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_80lij"]
+atlas = ExtResource("7_bo4iw")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6q2uy"]
+atlas = ExtResource("8_kl2xu")
+region = Rect2(0, 0, 44, 52)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_682cl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4cda")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ipju")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l7dkp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hyciy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ophit")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnetf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_80lij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6q2uy")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ng37b"]
+size = Vector2(14, 36.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n3wq5"]
+size = Vector2(18, 38)
+
+[node name="skeleton" type="CharacterBody2D"]
+script = ExtResource("1_vbbfa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1.5, 1.77273)
+scale = Vector2(0.931818, 0.931818)
+sprite_frames = SubResource("SpriteFrames_682cl")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.877878
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 7.25)
+shape = SubResource("RectangleShape2D_ng37b")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-6, 0)
+target_position = Vector2(0, 30)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1, 7)
+shape = SubResource("RectangleShape2D_n3wq5")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

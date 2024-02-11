@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://cjogvql0ind5g"]
+
+[ext_resource type="Texture2D" uid="uid://b02b42w7bavhx" path="res://world/Next_Level/Green Portal Sprite Sheet.png" id="1_lnqo5"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="2_yerp7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uuysu"]
+radius = 8.0
+height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o15td"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvgs7"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7wymj"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h82wr"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jbek6"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ebrw5"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xaunh"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_umesx"]
+atlas = ExtResource("1_lnqo5")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i481i"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o15td")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvgs7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7wymj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h82wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jbek6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ebrw5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xaunh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_umesx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="next_level_3" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_uuysu")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -4)
+sprite_frames = SubResource("SpriteFrames_i481i")
+autoplay = "default"
+frame_progress = 0.899823
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.52588e-05, 7.62939e-06)
+scale = Vector2(0.138725, 0.268256)
+color = Color(0.125, 0.5, 0.157, 1)
+energy = 0.2
+texture = ExtResource("2_yerp7")

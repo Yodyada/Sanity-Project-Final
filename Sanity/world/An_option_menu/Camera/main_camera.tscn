@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwpn7yy6w7sy7"]
+
+[ext_resource type="Script" path="res://world/An_option_menu/Camera/main_camera.gd" id="1_03qda"]
+
+[node name="Main_camera" type="Camera2D"]
+position = Vector2(160, 90)
+limit_top = 0
+limit_bottom = 177
+script = ExtResource("1_03qda")

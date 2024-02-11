@@ -1,0 +1,93 @@
+[gd_scene load_steps=13 format=3 uid="uid://cpxgxt0af3teb"]
+
+[ext_resource type="Texture2D" uid="uid://duheyvipex0kx" path="res://world/Map_Level/05(special_map)/enemy/gothicvania patreon collection/gothicvania patreon collection/3Fire-Skull-Files/PNG/fire-skull.png" id="1_1d63t"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="2_2sil1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o532y"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(0, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0faw8"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(96, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_owip3"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(192, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w5a7o"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(288, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7xr4"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(384, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hckjv"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(480, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8esu"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(576, 0, 96, 112)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6v3uk"]
+atlas = ExtResource("1_1d63t")
+region = Rect2(672, 0, 96, 112)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xj6sb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o532y")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0faw8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_owip3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w5a7o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7xr4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hckjv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8esu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6v3uk")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vxrsi"]
+radius = 14.0357
+
+[node name="fire_skull" type="CharacterBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-10.5, 20.0833)
+scale = Vector2(0.302083, 0.302083)
+sprite_frames = SubResource("SpriteFrames_xj6sb")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.263982
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-12, 30)
+shape = SubResource("CircleShape2D_vxrsi")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-13, 27)
+scale = Vector2(0.0945946, 0.0841924)
+energy = 0.5
+texture = ExtResource("2_2sil1")

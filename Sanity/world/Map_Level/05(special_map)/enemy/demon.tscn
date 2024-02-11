@@ -1,0 +1,92 @@
+[gd_scene load_steps=13 format=3 uid="uid://74ny5louacx1"]
+
+[ext_resource type="Texture2D" uid="uid://didap7uiykjpf" path="res://world/Map_Level/05(special_map)/enemy/gothicvania patreon collection/gothicvania patreon collection/4demon-Files/PNG/demon-idle.png" id="1_gfs75"]
+[ext_resource type="Script" path="res://world/Map_Level/05(special_map)/enemy/demon.gd" id="1_itsqx"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="2_s3mt4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jd10x"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(0, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cas2h"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(160, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x7ejm"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(320, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru5fj"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(480, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtg1v"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(640, 0, 160, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u733t"]
+atlas = ExtResource("1_gfs75")
+region = Rect2(800, 0, 160, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mufip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jd10x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cas2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x7ejm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ru5fj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtg1v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u733t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wmd5f"]
+size = Vector2(56, 74)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxk22"]
+size = Vector2(66, 79)
+
+[node name="demon" type="CharacterBody2D"]
+script = ExtResource("1_itsqx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-7.22222, 6.5)
+scale = Vector2(0.909722, 0.909722)
+sprite_frames = SubResource("SpriteFrames_mufip")
+animation = &"walk"
+autoplay = "walk"
+frame_progress = 0.0614251
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-16, 14)
+shape = SubResource("RectangleShape2D_wmd5f")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-22, 3)
+scale = Vector2(0.804054, 0.878007)
+texture = ExtResource("2_s3mt4")
+texture_scale = 0.4
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-16, 14.5)
+shape = SubResource("RectangleShape2D_qxk22")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

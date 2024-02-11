@@ -1,0 +1,86 @@
+[gd_scene load_steps=14 format=3 uid="uid://c2bwtx7pokmce"]
+
+[ext_resource type="Texture2D" uid="uid://dipb28po1h0av" path="res://world/Map_Level/04/enemy/ghost-halo/ghost-halo-1.png" id="1_3nm7u"]
+[ext_resource type="Script" path="res://world/Map_Level/04/enemy/ghost-halo/ghost.gd" id="1_ht3ii"]
+[ext_resource type="Texture2D" uid="uid://bc86lb6l2qyfj" path="res://world/Map_Level/04/enemy/ghost-halo/ghost-halo-2.png" id="2_ikorl"]
+[ext_resource type="Texture2D" uid="uid://fc35nxk4ecsc" path="res://world/Map_Level/04/enemy/ghost-halo/ghost-halo-3.png" id="3_0dgoh"]
+[ext_resource type="Texture2D" uid="uid://c28n0j1xapq85" path="res://world/Map_Level/04/enemy/ghost-halo/ghost-halo-4.png" id="4_bbivu"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="6_so6iw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s4at5"]
+atlas = ExtResource("1_3nm7u")
+region = Rect2(0, 0, 37, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wkriv"]
+atlas = ExtResource("2_ikorl")
+region = Rect2(0, 0, 37, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tpy2"]
+atlas = ExtResource("3_0dgoh")
+region = Rect2(0, 0, 37, 65)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2wn5"]
+atlas = ExtResource("4_bbivu")
+region = Rect2(0, 0, 37, 65)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6jto5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s4at5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wkriv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tpy2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2wn5")
+}],
+"loop": true,
+"name": &"run",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kk3dl"]
+height = 48.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cqt7t"]
+radius = 11.0
+height = 50.0
+
+[node name="ghost" type="CharacterBody2D"]
+script = ExtResource("1_ht3ii")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3.25, 5.70946)
+scale = Vector2(0.824324, 0.824324)
+sprite_frames = SubResource("SpriteFrames_6jto5")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.638586
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1, 12)
+shape = SubResource("CapsuleShape2D_kk3dl")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-11, 0)
+target_position = Vector2(0, 40)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(-1, 12)
+shape = SubResource("CapsuleShape2D_cqt7t")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.5
+texture = ExtResource("6_so6iw")
+texture_scale = 0.5
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

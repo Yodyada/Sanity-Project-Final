@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0axtal5wvx4q"]
+
+[ext_resource type="Texture2D" path="res://world/Map_Level/04/background04/background.png" id="1_4ehc5"]
+[ext_resource type="Texture2D" path="res://world/Map_Level/04/background04/mountains.png" id="2_mjp3l"]
+[ext_resource type="Texture2D" path="res://world/Map_Level/04/background04/graveyard.png" id="3_e3t3y"]
+
+[node name="bg_04" type="ParallaxBackground"]
+
+[node name="sky" type="ParallaxLayer" parent="."]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="sky"]
+scale = Vector2(0.839286, 0.839286)
+texture = ExtResource("1_4ehc5")
+centered = false
+
+[node name="mountain" type="ParallaxLayer" parent="."]
+texture_filter = 1
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="mountain"]
+texture_filter = 1
+position = Vector2(1, 44)
+scale = Vector2(0.759777, 0.759777)
+texture = ExtResource("2_mjp3l")
+centered = false
+
+[node name="mountain2" type="ParallaxLayer" parent="."]
+texture_filter = 1
+position = Vector2(175, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="mountain2"]
+texture_filter = 1
+position = Vector2(1, 44)
+scale = Vector2(0.759777, 0.759777)
+texture = ExtResource("2_mjp3l")
+centered = false
+
+[node name="graveyard" type="ParallaxLayer" parent="."]
+texture_filter = 1
+motion_mirroring = Vector2(320, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="graveyard"]
+texture_filter = 1
+position = Vector2(0, 67)
+scale = Vector2(0.918699, 0.918699)
+texture = ExtResource("3_e3t3y")
+centered = false

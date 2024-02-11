@@ -1,0 +1,86 @@
+[gd_scene load_steps=12 format=3 uid="uid://cifkfmhelgasj"]
+
+[ext_resource type="Script" path="res://world/Map_Level/05(special_map)/enemy/ghost_dog.gd" id="1_b2hqe"]
+[ext_resource type="Texture2D" uid="uid://dv3ghpiowid23" path="res://world/Map_Level/05(special_map)/enemy/gothicvania patreon collection/gothicvania patreon collection/2Hell-Hound-Files/PNG/hell-hound-run.png" id="1_ldpgp"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="2_7214s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m85j0"]
+size = Vector2(35, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udu8s"]
+atlas = ExtResource("1_ldpgp")
+region = Rect2(0, 0, 67, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_savrn"]
+atlas = ExtResource("1_ldpgp")
+region = Rect2(67, 0, 67, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kprre"]
+atlas = ExtResource("1_ldpgp")
+region = Rect2(134, 0, 67, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7u46"]
+atlas = ExtResource("1_ldpgp")
+region = Rect2(201, 0, 67, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycqso"]
+atlas = ExtResource("1_ldpgp")
+region = Rect2(268, 0, 67, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5mgqu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udu8s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_savrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kprre")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7u46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ycqso")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qoyom"]
+size = Vector2(37, 22)
+
+[node name="ghost_dog" type="CharacterBody2D"]
+script = ExtResource("1_b2hqe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1.5, 6)
+shape = SubResource("RectangleShape2D_m85j0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5mgqu")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.00163923
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(0, 2)
+scale = Vector2(0.0777027, 0.0575601)
+texture = ExtResource("2_7214s")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(-17, 0)
+target_position = Vector2(0, 20)
+
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(1.5, 6)
+shape = SubResource("RectangleShape2D_qoyom")
+
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6xeerorakbwv"]
+
+[ext_resource type="Texture2D" uid="uid://cbmv63o27baho" path="res://world/Map_Level/05(special_map)/background/stringstar fields/background_0.png" id="1_d7abk"]
+[ext_resource type="Texture2D" uid="uid://cgok3c4c6mrne" path="res://world/Map_Level/05(special_map)/background/stringstar fields/background_1.png" id="2_xqgkv"]
+[ext_resource type="Texture2D" uid="uid://qm4rtwbdc2lv" path="res://world/Map_Level/05(special_map)/background/stringstar fields/background_2.png" id="3_uyjiy"]
+
+[node name="bg05" type="ParallaxBackground"]
+
+[node name="sky" type="ParallaxLayer" parent="."]
+texture_filter = 1
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="sky"]
+scale = Vector2(1.11111, 1)
+texture = ExtResource("1_d7abk")
+centered = false
+
+[node name="middle_cloud" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="middle_cloud"]
+texture_filter = 1
+texture = ExtResource("2_xqgkv")
+centered = false
+
+[node name="near_cloud" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="near_cloud"]
+texture = ExtResource("3_uyjiy")
+centered = false
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0.337255, 0.337255, 0.337255, 1)

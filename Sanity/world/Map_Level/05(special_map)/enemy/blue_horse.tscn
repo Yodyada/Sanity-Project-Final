@@ -1,0 +1,99 @@
+[gd_scene load_steps=11 format=3 uid="uid://fxorea2cxdaw"]
+
+[ext_resource type="Texture2D" uid="uid://cw53rj6fsyp81" path="res://world/Map_Level/05(special_map)/enemy/gothicvania patreon collection/gothicvania patreon collection/1Nightmare-Files/PNG/nightmare-galloping.png" id="1_ivoqm"]
+[ext_resource type="Script" path="res://world/Map_Level/05(special_map)/enemy/blue_horse.gd" id="1_piurw"]
+[ext_resource type="Texture2D" uid="uid://pxwrufxd10ps" path="res://world/shadow_and_light/pictureLightMask2_thumb.png" id="2_1wj0q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kcxfd"]
+size = Vector2(56, 46)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgg7u"]
+atlas = ExtResource("1_ivoqm")
+region = Rect2(0, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pypc"]
+atlas = ExtResource("1_ivoqm")
+region = Rect2(144, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fns5"]
+atlas = ExtResource("1_ivoqm")
+region = Rect2(288, 0, 144, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kdivx"]
+atlas = ExtResource("1_ivoqm")
+region = Rect2(432, 0, 144, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5kvmv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgg7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pypc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3fns5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kdivx")
+}],
+"loop": true,
+"name": &"run",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ywfd1"]
+size = Vector2(58, 48)
+
+[node name="blue_horse" type="CharacterBody2D"]
+script = ExtResource("1_piurw")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(28, 5)
+shape = SubResource("RectangleShape2D_kcxfd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(22.6875, 2.875)
+scale = Vector2(0.580729, 0.580729)
+sprite_frames = SubResource("SpriteFrames_5kvmv")
+animation = &"run"
+autoplay = "run"
+frame_progress = 0.393444
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 33)
+
+[node name="HitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(28, 5)
+shape = SubResource("RectangleShape2D_ywfd1")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(5, -3)
+scale = Vector2(0.133446, 0.0738832)
+energy = 1.77
+texture = ExtResource("2_1wj0q")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(37.125, 8.625)
+scale = Vector2(0.107263, 0.0713058)
+energy = 1.77
+texture = ExtResource("2_1wj0q")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(27.125, 26.375)
+scale = Vector2(0.0869932, 0.0575601)
+energy = 1.77
+texture = ExtResource("2_1wj0q")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+position = Vector2(3, 26)
+scale = Vector2(0.107264, 0.0678694)
+energy = 1.77
+texture = ExtResource("2_1wj0q")
+
+[connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dm2jpphlneawg"]
+
+[ext_resource type="AudioStream" uid="uid://bsi3j87c518sh" path="res://world/background_music/z3r0-8bitSyndrome.wav" id="1_wyn88"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_wyn88")
+volume_db = -10.4
+autoplay = true
